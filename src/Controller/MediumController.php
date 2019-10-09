@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use GuzzleHttp\Client;
-use App\Service\Medium\MediumParser;
+use App\Service\Medium;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,19 +13,13 @@ class MediumController extends AbstractController
     /**
      * @Route("/queue", methods={"GET"}, name="medium")
      */
-    public function index(Request $request): JsonResponse
+    public function index(Request $request, Medium $medium): JsonResponse
     {
         $articleURL = $request->query->get('article');
-
-        $headers = ['Referer' => 'twitter.com'];
         
-        $client = new Client(['headers' => $headers]);
+        $article = $medium->getArticle($articleURL);
 
-        $response = $client->request('GET', $articleURL . '?format=json');
-        
-        $pageBody = str_replace('])}while(1);</x>', '', $response->getBody());
-
-        $articleDetails = MediumParser::parse($pageBody);
+        $articleDetails = $medium->parse($article);
 
         if ($request->query->get('dump')) {
             dd($articleDetails);

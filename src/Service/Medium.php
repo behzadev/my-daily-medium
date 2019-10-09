@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Service\Medium;
+namespace App\Service;
 
-class MediumParser
+use GuzzleHttp\Client;
+
+class Medium
 {
     /**
      * Base URL for Medium images
@@ -17,12 +19,27 @@ class MediumParser
     ];
 
     /**
+     * Get article content as json
+     *
+     * @param string $articleURL
+     * @return string
+     */
+    public function getArticle(string $articleURL): string
+    {
+        $client = new Client(['headers' => ['Referer' => 'twitter.com']]);
+
+        $response = $client->request('GET', $articleURL . '?format=json');
+        
+        return str_replace('])}while(1);</x>', '', $response->getBody());
+    }
+
+    /**
      * Parse HTML output of a Medium story
      *
      * @param string $article
-     * @return array
+     * @return array of article details
      */
-    public static function Parse(string $article): array
+    public function Parse(string $article): array
     {
         $articleDetails = json_decode($article)->payload->value;
 
