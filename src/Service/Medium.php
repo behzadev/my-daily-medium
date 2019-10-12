@@ -16,6 +16,7 @@ class Medium
      */
     const INVALID_PARAGRAPH_TYPES = [
         4, // Photo by...
+        14, // Link to external sources
     ];
 
     /**
@@ -49,10 +50,12 @@ class Medium
 
         $articleText = '';
         $articleCharsCount = 0;
+        $paragraphsCharsCount = 0;
         foreach ($articleDetails->content->bodyModel->paragraphs as $key => $paragraph) {
             if (!in_array($paragraph->type, self::INVALID_PARAGRAPH_TYPES)) {
-                $articleText.= $paragraph->text . '\r\n';
+                $articleText.= $paragraph->text;
                 $articleCharsCount+= mb_strlen($paragraph->text);
+                $paragraphsCharsCount++;
             }
         }
 
@@ -61,6 +64,7 @@ class Medium
             'text' => $articleText,
             'image' => $articleImage,
             'chars_count' => $articleCharsCount,
+            'paragraphs_count' => $paragraphsCharsCount,
         ];
     }
 }
