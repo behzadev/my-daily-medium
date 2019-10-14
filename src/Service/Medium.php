@@ -67,4 +67,14 @@ class Medium
             'paragraphs_count' => $paragraphsCharsCount,
         ];
     }
+
+    public function getCharsCount(string $article)
+    {
+        // TODO
+    }
+
+    public function getParagraphsCount(string $article)
+    {
+        // TODO
+    }
 }
