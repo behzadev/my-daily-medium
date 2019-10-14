@@ -53,7 +53,7 @@ class Medium
         $paragraphsCharsCount = 0;
         foreach ($articleDetails->content->bodyModel->paragraphs as $key => $paragraph) {
             if (!in_array($paragraph->type, self::INVALID_PARAGRAPH_TYPES)) {
-                $articleText.= $paragraph->text . '\r\n';
+                $articleText.= $paragraph->text . PHP_EOL . PHP_EOL;
                 $articleCharsCount+= mb_strlen($paragraph->text);
                 $paragraphsCharsCount++;
             }
