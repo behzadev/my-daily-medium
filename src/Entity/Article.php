@@ -41,6 +41,16 @@ class Article
      */
     private $paragraphs_count;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $author_name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $author_image;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +112,30 @@ class Article
     public function setParagraphsCount(int $paragraphs_count): self
     {
         $this->paragraphs_count = $paragraphs_count;
+
+        return $this;
+    }
+
+    public function getAuthorName(): ?string
+    {
+        return $this->author_name;
+    }
+
+    public function setAuthorName(string $author_name): self
+    {
+        $this->author_name = $author_name;
+
+        return $this;
+    }
+
+    public function getAuthorImage(): ?string
+    {
+        return $this->author_image;
+    }
+
+    public function setAuthorImage(string $author_image): self
+    {
+        $this->author_image = $author_image;
 
         return $this;
     }

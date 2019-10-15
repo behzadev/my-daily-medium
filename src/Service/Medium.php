@@ -10,6 +10,7 @@ class Medium
      * Base URL for Medium images
      */
     const IMG_BASE_URL = 'https://miro.medium.com/max/2000/';
+    const PROFILE_IMG_BASE_URL = 'https://miro.medium.com/fit/c/160/160/';
 
     /**
      * Valid paragraph types of a Medium story to be captured as it's text
@@ -43,6 +44,11 @@ class Medium
     public function Parse(string $article): array
     {
         $articleDetails = json_decode($article)->payload->value;
+        $articleRefrence = json_decode($article)->payload->references;
+
+        $authorUserId = $articleDetails->creatorId;
+        $authorName = $articleRefrence->User->$authorUserId->name;
+        $authorImage = self::PROFILE_IMG_BASE_URL . $articleRefrence->User->$authorUserId->imageId;
 
         $articleTitle = $articleDetails->title;
 
@@ -63,6 +69,8 @@ class Medium
             'title' => $articleTitle,
             'text' => $articleText,
             'image' => $articleImage,
+            'author_name' => $authorName,
+            'author_image' => $authorImage,
             'chars_count' => $articleCharsCount,
             'paragraphs_count' => $paragraphsCharsCount,
         ];

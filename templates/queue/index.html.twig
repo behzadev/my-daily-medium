@@ -13,7 +13,10 @@
 <div class="content">
     <div class="container">
         <div class="row" style="margin-bottom: 20px;">
-            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                <img class="rounded-circle" width="80" src="{{ article.author_image }}" />
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
                 <h2 style="padding-top: 20px;">{{ article.title }}</h2>
             </div>
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
@@ -25,6 +28,24 @@
                 <div class="tour-booking-form">
                     <form id="queue-form">
                         <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <h4 class="tour-form-title">Author</h4>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="author_name">Author Name</label>
+                                    <input id="author_name" name="author_name" type="text" value="{{ article.author_name }}" placeholder="Title" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <label class="control-label" for="author_image">Author Image</label>
+                                    <input id="author_image" name="author_image" type="text" value="{{ article.author_image }}" placeholder="Image URL" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 35px;">
+                                <h4 class="tour-form-title">Article</h4>
+                            </div>
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="form-group">
                                     <label class="control-label" for="name">Title</label>
@@ -33,7 +54,7 @@
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="form-group">
-                                    <label class="control-label" for="name">Image</label>
+                                    <label class="control-label" for="name">Cover Image</label>
                                     <input id="image" name="image" type="text" value="{{ article.image }}" placeholder="Image URL" class="form-control" required>
                                 </div>
                             </div>

@@ -39,6 +39,8 @@ class MediumController extends AbstractController
             ->setTitle($request->get('title'))
             ->setText($request->get('text'))
             ->setImage($request->get('image'))
+            ->setAuthorName($request->get('author_name'))
+            ->setAuthorImage($request->get('author_image'))
             ->setCharsCount(Medium::getCharsCount($request->get('text')))
             ->setParagraphsCount(Medium::getParagraphsCount($request->get('text')));
 
