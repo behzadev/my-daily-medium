@@ -68,13 +68,25 @@ class Medium
         ];
     }
 
-    public function getCharsCount(string $article)
+    /**
+     * Returns characters count of string
+     *
+     * @param string $article
+     * @return void
+     */
+    public function getCharsCount(string $article): int
     {
-        // TODO
+        return mb_strlen($article);
     }
 
-    public function getParagraphsCount(string $article)
+    /**
+     * Returns count paragraphs of article
+     *
+     * @param string $article
+     * @return void
+     */
+    public function getParagraphsCount(string $article): int
     {
-        // TODO
+        return count(explode(PHP_EOL, $article)) - 1;
     }
 }

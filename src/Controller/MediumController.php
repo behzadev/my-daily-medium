@@ -16,7 +16,7 @@ class MediumController extends AbstractController
     /**
      * @Route("/queue", methods={"GET"}, name="medium_queue_create")
      */
-    public function create(Request $request, Medium $medium, EntityManagerInterface $entityManager): Response
+    public function create(Request $request, Medium $medium): Response
     {
         $articleURL = $request->query->get('article');
         
@@ -32,7 +32,7 @@ class MediumController extends AbstractController
     /**
      * @Route("/queue", methods={"POST"}, name="medium_queue_store")
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request, EntityManagerInterface $entityManager): JsonResponse
     {
         $article = new Article;
         $article
@@ -47,7 +47,7 @@ class MediumController extends AbstractController
         $entityManager->flush();
     
         return new JsonResponse([
-            'success' => true
+            'status' => 'success'
         ]);
     }
 }

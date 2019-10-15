@@ -7,14 +7,19 @@ $(document).ready(function () {
             url: '/queue',
             data: $(this).serialize(),
             success: function (response) {
-                // data = $.parseJSON(response);
-                // alert(data.status);
-                if (response == 'true') {
-                    
+                if (response.status == 'success') {
+                    swal(
+                        '',
+                        'Article queued successfully',
+                        'success'
+                      );
                 } else {
-                    
+                    swal(
+                        '',
+                        'Queue failed :(',
+                        'error'
+                      );
                 }
-
             }
         });
         e.preventDefault();

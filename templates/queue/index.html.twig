@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/sweetalert2.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 {% endblock %}
 
@@ -46,13 +47,13 @@
                             <div class="form-group">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item">
-                                        <span class="badge badge-primary">{{ article.chars_count }} Characters</span>
+                                        <span class="badge badge-primary">~{{ article.chars_count }} Characters</span>
                                     </li>
                                     <li class="nav-item">
-                                        <span class="badge badge-primary">{{ article.paragraphs_count }} Paragraphs</span>
+                                        <span class="badge badge-primary">~{{ article.paragraphs_count }} Paragraphs</span>
                                     </li>
                                     <li class="nav-item">
-                                        <span class="badge badge-success">// TODO Posts</span>
+                                        <span class="badge badge-success">~// TODO Posts</span>
                                     </li>
                                 </ul>
                             </div>
@@ -72,5 +73,6 @@
 
 {% block javascripts %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/sweetalert2.min.js"></script>
 <script src="js/medium.js"></script>
 {% endblock %}
