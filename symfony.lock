@@ -1,4 +1,19 @@
 {
+    "binsoul/net-mqtt": {
+        "version": "0.2.1"
+    },
+    "binsoul/net-mqtt-client-react": {
+        "version": "0.3.2"
+    },
+    "clue/http-proxy-react": {
+        "version": "v1.3.0"
+    },
+    "clue/socks-react": {
+        "version": "v0.8.7"
+    },
+    "corneltek/getoptionkit": {
+        "version": "2.6.0"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -78,6 +93,9 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "evenement/evenement": {
+        "version": "v3.0.1"
+    },
     "guzzlehttp/guzzle": {
         "version": "6.3.3"
     },
@@ -89,6 +107,12 @@
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "lazyjsonmapper/lazyjsonmapper": {
+        "version": "v1.6.3"
+    },
+    "mgp25/instagram-php": {
+        "version": "v7.0.1"
     },
     "nikic/php-parser": {
         "version": "v4.2.4"
@@ -113,6 +137,30 @@
     },
     "ralouphie/getallheaders": {
         "version": "3.0.3"
+    },
+    "react/cache": {
+        "version": "v1.0.0"
+    },
+    "react/dns": {
+        "version": "v0.4.19"
+    },
+    "react/event-loop": {
+        "version": "v0.4.3"
+    },
+    "react/promise": {
+        "version": "v2.7.1"
+    },
+    "react/promise-timer": {
+        "version": "v1.5.1"
+    },
+    "react/socket": {
+        "version": "v0.8.12"
+    },
+    "react/stream": {
+        "version": "v1.1.0"
+    },
+    "ringcentral/psr7": {
+        "version": "1.2.2"
     },
     "symfony/cache": {
         "version": "v4.3.4"
@@ -288,6 +336,12 @@
     },
     "twig/twig": {
         "version": "v2.12.0"
+    },
+    "valga/fbns-react": {
+        "version": "0.1.8"
+    },
+    "winbox/args": {
+        "version": "v1.0.0"
     },
     "zendframework/zend-code": {
         "version": "3.3.2"
