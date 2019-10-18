@@ -51,6 +51,11 @@ class Article
      */
     private $author_image;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_sent;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +141,18 @@ class Article
     public function setAuthorImage(string $author_image): self
     {
         $this->author_image = $author_image;
+
+        return $this;
+    }
+
+    public function getIsSent(): ?bool
+    {
+        return $this->is_sent;
+    }
+
+    public function setIsSent(bool $is_sent): self
+    {
+        $this->is_sent = $is_sent;
 
         return $this;
     }
