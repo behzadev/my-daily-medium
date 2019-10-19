@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "guzzlehttp/guzzle": "^6.3",
+        "intervention/image": "^2.5",
         "mgp25/instagram-php": "^7.0",
         "symfony/console": "4.3.*",
         "symfony/dotenv": "4.3.*",
