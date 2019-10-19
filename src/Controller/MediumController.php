@@ -42,7 +42,8 @@ class MediumController extends AbstractController
             ->setAuthorName($request->get('author_name'))
             ->setAuthorImage($request->get('author_image'))
             ->setCharsCount(Medium::getCharsCount($request->get('text')))
-            ->setParagraphsCount(Medium::getParagraphsCount($request->get('text')));
+            ->setParagraphsCount(Medium::getParagraphsCount($request->get('text')))
+            ->setIsSent(false);
 
         $entityManager->persist($article);
 
