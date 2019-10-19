@@ -14,4 +14,6 @@
 
 ###> other ###
 /.idea
+/tmp-images/*
+!/tmp-images/.gitkeep
 ###< other ###
