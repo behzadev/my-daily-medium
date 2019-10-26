@@ -44,6 +44,18 @@ class SendPostCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
+        // Get article
+        $article = $this->articleRepository->getBySentStatus(false);
+
+        // Get a local copy of image
+        $imageLocalPath = $this->mediumImage->copyImageToLocal($article);
+
+        // Resize image
+        $resizedImage = $this->mediumImage->resize($imageLocalPath);
+
+        // Apply bottom bar as overlay
+        $overlaidImage = $this->mediumImage->applyOverlay($imageLocalPath);
+
         $instagram = new Instagram($this->debug, $this->truncatedDebug);
 
         try {
@@ -51,12 +63,6 @@ class SendPostCommand extends Command
         } catch (\Exception $e) {
             echo 'Something went wrong: '.$e->getMessage()."\n";
         }
-
-        // Get article
-        $article = $this->articleRepository->getBySentStatus(false);
-
-        // Get a local copy of image
-        $imageLocalPath = $this->mediumImage->copyImageToLocal($article);
         
         try {
             $photo = new InstagramPhoto($imageLocalPath);
