@@ -47,11 +47,16 @@ class SendPostCommand extends Command
         // Get article
         $article = $this->articleRepository->getBySentStatus(false);
 
+        if(!$article) {
+            $io->error('No queued posts found to send :(');
+            die();
+        }
+
         $this->mediumImage
-                        ->setArtcile($article)
-                        ->copyImageToLocal()
-                        ->resize()
-                        ->applyOverlay();
+            ->setArtcile($article)
+            ->copyImageToLocal()
+            ->resize()
+            ->applyOverlay();
 
         $instagram = new Instagram($this->debug, $this->truncatedDebug);
 
