@@ -7,42 +7,70 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class MediumImage
 {
-    public function copyImageToLocal(Article $article)
+    private $article;
+
+    private $image;
+
+    private $imagePath;
+
+    /**
+     * Set article to work on
+     *
+     * @param Article $article
+     * @return self
+     */
+    public function setArtcile(Article $article): self
     {
-        $imgExt = pathinfo($article->getImage(), PATHINFO_EXTENSION) != '' ? '.' . pathinfo($article->getImage(), PATHINFO_EXTENSION) : '.jpg';
-        
-        $imgName = rand(1, 99999) . $imgExt;
+        $this->article = $article;
 
-        copy($article->getImage(), $_ENV['IMG_TMP_PATH'] . $imgName);    
-
-        return $_ENV['IMG_TMP_PATH'] . $imgName;
+        return $this;
     }
 
     /**
-     * Apply overlay on image
+     * Copy article image to localhost for manipulation
      *
-     * @param string $imagePath
-     * @return string
+     * @return self
      */
-    public function applyOverlay(string $imagePath): string
+    public function copyImageToLocal(): self
     {
-        $img = Image::make($imagePath);
+        $imgExt = pathinfo($this->article->getImage(), PATHINFO_EXTENSION) != '' ? '.' . pathinfo($this->article->getImage(), PATHINFO_EXTENSION) : '.jpg';
+        
+        $imgName = rand(1, 99999) . $imgExt;
 
-        $img->insert('public/images/watermark.png', 'bottom-center');
-
-        $img->save($imagePath);
-
-        return $imagePath;
+        copy($this->article->getImage(), $_ENV['IMG_TMP_PATH'] . $imgName);
+        
+        $this->imagePath = $_ENV['IMG_TMP_PATH'] . $imgName;
+        
+        return $this;
     }
 
-    public function resize(string $imagePath): string
+    /**
+     * Resize local article image to fit Instagram size
+     *
+     * @return self
+     */
+    public function resize(): self
     {
-        $img = Image::make($imagePath);
+        $this->image = Image::make($this->imagePath);
 
-        $img->resize(1080, null);
+        $this->image->resize(1080, null);
 
-        $img->save($imagePath);
+        $this->image->save($this->imagePath);
 
-        return $imagePath;
+        return $this;
+    }
+
+    /**
+     * Apply overlay image on the article image
+     *
+     * @return string
+     */
+    public function applyOverlay(): string
+    {
+        $this->image->insert('public/images/watermark.png', 'bottom-center');
+
+        $this->image->save($this->imagePath);
+
+        return $this->imagePath;
     }
 }

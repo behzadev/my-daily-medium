@@ -47,14 +47,11 @@ class SendPostCommand extends Command
         // Get article
         $article = $this->articleRepository->getBySentStatus(false);
 
-        // Get a local copy of image
-        $imageLocalPath = $this->mediumImage->copyImageToLocal($article);
-
-        // Resize image
-        $resizedImage = $this->mediumImage->resize($imageLocalPath);
-
-        // Apply bottom bar as overlay
-        $overlaidImage = $this->mediumImage->applyOverlay($imageLocalPath);
+        $this->mediumImage
+                        ->setArtcile($article)
+                        ->copyImageToLocal()
+                        ->resize()
+                        ->applyOverlay();
 
         $instagram = new Instagram($this->debug, $this->truncatedDebug);
 
